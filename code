@@ -1,0 +1,115 @@
+package systema;
+class Address {
+	private String state ;     
+	private String street ; 
+	private String city;
+	private String no;
+public Address(String s, String street, 
+		       String city, String no) 
+{
+	this.state=s;
+	this.street=street;
+	this.city=city;
+	this.no=no;
+}
+public String toString() {
+	return " state:"+state+" street:"+street+" city:"
+			+city+" no:"+no;
+}
+}
+package systema;
+class Person {
+	private String name;
+	private char sex;
+	protected Address adr;
+
+public Person() {
+
+}
+public Person(String name,char sex,Address adr) {
+	this.name=name;
+	this.sex=sex;
+	this.adr=adr;
+}
+public void setName(String name) {
+	this.name=name;
+}
+public String getName() {
+	return name;
+}
+public void setSex(char sex ) {
+	this.sex=sex;
+}
+public char getSex() {
+	return sex;
+}
+public void setAdr(Address adr) {
+	this.adr=adr;
+}
+public Address getAdr() {
+	return adr;
+}
+public String toString() {
+	return "name:"+name+" sex:"+sex;
+}
+}
+package systema;
+class Student extends Person {
+	private String stNo;
+	private int grade;
+public Student() {
+}
+public Student(String name, char sex, Address adr,
+		       String stNo, int grade) {
+	super(name,sex,adr);
+	this.stNo=stNo;
+	this.grade=grade;	
+}
+public void setStNo(String stNo) {
+	this.stNo=stNo;
+}
+public String getStNo () {
+	return stNo;
+}
+public void setGrade(int grade) {
+	this.grade=grade;
+}
+public int getGrade() { 
+    return grade;
+}
+
+}
+package systema;
+class Teacher extends Person {
+	private int gongHao;
+public Teacher() {
+}
+public Teacher(String name, char sex, 
+		       Address adr, int gongHao) {
+	super(name,sex,adr);
+	this.gongHao=gongHao;
+}
+public void setStudentGrade(Student s, int grade) {
+	s.setGrade(grade);
+}
+}
+package systema;
+public class Test {
+	public static void main(String[] args) {
+/*功能a*/Student a1=new Student();
+		 a1.setName("Ming");
+		 a1.setSex('F');
+		 a1.setAdr(new Address("China","xiwang road",
+				              "BeiJing","7号"));
+		
+/*功能b*/Teacher A1=new Teacher("Zhang",'M',new Address("USA","heping road","Washington",
+		                        "NO.2"),10092);
+		
+/*功能c*/A1.setStudentGrade(a1, 59);
+/*功能d*/a1.getGrade();
+/*功能e*/System.out.println(a1.toString()+a1.adr+"\ngrade:"+a1.getGrade());
+		
+}
+}
+
+
